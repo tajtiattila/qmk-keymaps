@@ -1,3 +1,5 @@
+# renderkbd source for 'prog' layer keymap image
+
 [render]
 font = "local:NotoSans-Regular"
 
