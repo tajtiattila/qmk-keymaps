@@ -24,6 +24,18 @@ vscale = 2
 "MidiOn" = "Midi\nON"
 "MidOff" = "Midi\nOFF"
 
+[[fontmap]]
+font = "local:DejavuSans"
+labels = [ "↑", "←", "↓", "→" ]
+
+[keycolor]
+"Ctrl·Esc" = "#ffac54"
+"Lower" = "#ffac54"
+"Raise" = "#c260ff"
+"S·Enter" = "#c260ff"
+"Accent" = "#99ed97"
+"Nav · ;" = "#12e8c4"
+
 [[label]]
 position = "center"
 layer = "Prog"
@@ -32,22 +44,26 @@ layer = "Prog"
 position = "top"
 scale = 0.8
 layer = "Raise"
+color = "#8700db"
 
 [[label]]
 position = "bottom"
 scale = 0.8
 layer = "Lower"
+color = "#db7100"
 
-#[[label]]
-#position = "top-right"
-#scale = 0.8
-#layer = "Navigation"
-#ignore = [ "Shift", "Ctrl" ]
+[[label]]
+position = "top-right"
+scale = 0.5
+layer = "Navigation"
+color = "#6ad8c6"
+ignore = [ "Shift", "Ctrl" ]
 
 [[label]]
 position = "left"
 scale = 0.8
 layer = "Accent"
+color = "#036001"
 ignore = [ "Shift" ]
 
 [[label]]
