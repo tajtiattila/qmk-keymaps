@@ -1,5 +1,7 @@
 #pragma once
 
+#define DEBOUNCE 5
+
 #define UNICODE_KEY_WINC KC_F20
 
 #ifdef AUDIO_ENABLE
