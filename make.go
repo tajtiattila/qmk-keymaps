@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -12,6 +13,17 @@ import (
 var username = os.Getenv("USERNAME")
 
 func main() {
+	force := flag.Bool("f", false, "ignore system check")
+	flag.Parse()
+
+	if runtime.GOOS == "windows" && !*force {
+		_, err := exec.LookPath("pacman")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "pacman not found; not in MSYS?")
+			os.Exit(1)
+		}
+	}
+
 	qmk_init()
 
 	build("preonic", "rev3")
