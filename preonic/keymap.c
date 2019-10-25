@@ -42,7 +42,7 @@ enum preonic_keycodes {
 #define CxENT  MT(MOD_RCTL, KC_ENT)  // right control when held or enter
 #define SxENT  MT(MOD_RSFT, KC_ENT)  // right shift when held or enter
 #define xSCLN  LT(_NAV, KC_SCLN)     // navigation layer when held or semicolon
-#define xACC   MO(_ACCENT)   // accent layer when held or semicolon
+#define xACC   MO(_ACCENT)   // accent layer when held
 #define xGUI   MO(_GUIMGR)
 #define ALT_F4 LALT(KC_F4)
 
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Shift│   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │Enter │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Ctrl │ GUI  │ LAlt │ F20  │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
+ * │ Ctrl │ GUI  │ F20  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_QWERTY] = LAYOUT_preonic_1x2uC( \
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_LCTL, KC_LGUI, KC_LALT, xACC,    LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_LCTL, KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Game
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Shift│   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │Enter │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ F13  │ F14  │ LAlt │ F15  │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
+ * │ F13  │ F14  │ F15  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_GAME] = LAYOUT_preonic_1x2uC( \
@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_F13,  KC_F14,  KC_LALT, KC_F15,  LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_F13,  KC_F14,  KC_F15,  KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Prog
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │Shift │   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │S|Entr│
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Mgr  │ GUI  │ LAlt │Accent│Lower │    Space    │Raise │Accent│ RAlt │ GUI  │ Mgr  │
+ * │ Mgr  │ GUI  │Accent│ LAlt │Lower │    Space    │Raise │RAlt  │Accent│ GUI  │ Mgr  │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_PROG] = LAYOUT_preonic_1x2uC( \
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   CxESC,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    xSCLN,   KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SxENT,   \
-  xGUI,    KC_LGUI, KC_LALT, xACC,    LOWER,       KC_SPC,       RAISE,   xACC,    KC_RALT, KC_RGUI, xGUI     \
+  xGUI,    KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_RALT, xACC,    KC_RGUI, xGUI     \
 ),
 
 /* Lower
