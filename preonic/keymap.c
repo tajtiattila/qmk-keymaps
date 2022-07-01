@@ -26,7 +26,7 @@ enum preonic_layers {
   _ADJUST,
   _ACCENT,
   _NAV,
-  _GUIMGR,
+  _MGR,
 };
 
 enum preonic_keycodes {
@@ -42,8 +42,9 @@ enum preonic_keycodes {
 #define CxENT  MT(MOD_RCTL, KC_ENT)  // right control when held or enter
 #define SxENT  MT(MOD_RSFT, KC_ENT)  // right shift when held or enter
 #define xSCLN  LT(_NAV, KC_SCLN)     // navigation layer when held or semicolon
-#define xACC   MO(_ACCENT)   // accent layer when held
-#define xGUI   MO(_GUIMGR)
+#define lACC   MO(_ACCENT)           // accent layer when held
+#define xACC   LT(_ACCENT, KC_F20)   // accent layer when held or F20
+#define xMGR   LT(_MGR, KC_F19)      // mgr layer when held or F19
 #define ALT_F4 LALT(KC_F4)
 
 enum unicode_names {
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_LCTL, KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  KC_LCTL, KC_LGUI, lACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Game
@@ -144,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   CxESC,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    xSCLN,   KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SxENT,   \
-  xGUI,    KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   xACC,    KC_RALT, KC_RGUI, xGUI     \
+  xMGR,    KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   lACC,    KC_RALT, KC_RGUI, xMGR     \
 ),
 
 /* Lower
@@ -265,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │      │      │      │      │      │             │      │      │      │      │      │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
-[_GUIMGR] = LAYOUT_preonic_1x2uC( \
+[_MGR] = LAYOUT_preonic_1x2uC( \
   ALT_F4,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, KC_ACL0, _______, _______, _______, _______, _______, _______, \
   KC_LCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_ACL1, _______, _______, _______, _______, _______, KC_RCTL, \
