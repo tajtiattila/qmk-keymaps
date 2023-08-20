@@ -19,8 +19,8 @@
 
 enum preonic_layers {
   _QWERTY,
-  _GAME,
-  _PROG,
+  _EXTRA,
+  _HACK,
   _LOWER,
   _RAISE,
   _ADJUST,
@@ -31,10 +31,10 @@ enum preonic_layers {
 
 enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
-  GAME,
-  PROG,
+  HACK,
   LOWER,
   RAISE,
+  EXTRA,
   BACKLIT
 };
 
@@ -87,28 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │   `  │   1  │   2  │   3  │   4  │   5  │   6  │   7  │   8  │   9  │   0  │ Del  │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Tab  │   Q  │   W  │   E  │   R  │   T  │   Y  │   U  │   I  │   O  │   P  │ Bksp │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Esc  │   A  │   S  │   D  │   F  │   G  │   H  │   J  │   K  │   L  │   ;  │   "  │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Shift│   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │Enter │
- * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Ctrl │ GUI  │ F20  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
- * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
- */
-[_QWERTY] = LAYOUT_preonic_1x2uC( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_LCTL, KC_LGUI, lACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-/* Game
- * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │   `  │   1  │   2  │   3  │   4  │   5  │   6  │   7  │   8  │   9  │   0  │ Del  │
+ * │ Esc  │   1  │   2  │   3  │   4  │   5  │   6  │   7  │   8  │   9  │   0  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Tab  │   Q  │   W  │   E  │   R  │   T  │   Y  │   U  │   I  │   O  │   P  │ Bksp │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
@@ -116,18 +95,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Shift│   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │Enter │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ F13  │ F14  │ F15  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
+ * │ Xtra │   `  │ F20  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
-[_GAME] = LAYOUT_preonic_1x2uC( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
+[_QWERTY] = LAYOUT_preonic_1x2uC( \
+  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_F13,  KC_F14,  KC_F15,  KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  EXTRA,   KC_GRV,  lACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
-/* Prog
+/* Xtra: arrows and keypad
+ * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
+ * │      │      │      │      │      │      │NumLk │ kp7  │ kp8  │ kp9  │ kp/  │      │
+ * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+ * │      │      │      │      │ Ins  │ Home │ PgUp │ kp4  │ kp5  │ kp6  │ kp*  │      │
+ * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+ * │      │      │      │      │ Del  │ End  │ PgDn │ kp1  │ kp2  │ kp3  │ kp-  │      │
+ * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+ * │      │      │      │      │      │      │      │ kp0  │ kp.  │ Entr │ kp+  │      │
+ * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
+ * │      │      │      │      │      │             │      │      │      │      │      │
+ * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
+ */
+[_EXTRA] = LAYOUT_preonic_1x2uC( \
+  _______, _______, _______, _______, _______, _______, KC_NLCK, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS, _______, \
+  _______, _______, _______, _______, KC_INS,  KC_HOME, KC_PGUP, KC_KP_4, KC_KP_5, KC_KP_6, KC_PAST, _______, \
+  _______, _______, _______, _______, KC_DEL,  KC_END,  KC_PGDN, KC_KP_1, KC_KP_2, KC_KP_3, KC_PMNS, _______, \
+  _______, _______, _______, _______, _______, _______, _______, KC_KP_0, KC_PDOT, KC_PENT, KC_PPLS, _______, \
+  _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______  \
+),
+
+/* Hack
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
  * │   `  │   1  │   2  │   3  │   4  │   5  │   6  │   7  │   8  │   9  │   0  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │ Mgr  │ GUI  │Accent│ LAlt │Lower │    Space    │Raise │Accent│ RAlt │ GUI  │ Mgr  │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
-[_PROG] = LAYOUT_preonic_1x2uC( \
+[_HACK] = LAYOUT_preonic_1x2uC( \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   CxESC,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    xSCLN,   KC_QUOT, \
@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │      │
+ * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │ Ins  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │   ~  │  F9  │  F10 │  F11 │  F12 │      │   5  │   6  │   7  │   8  │   9  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
@@ -158,20 +158,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Shift│  F1  │  F2  │  F3  │  F4  │      │   +  │   -  │   =  │      │   _  │Shift │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Ctrl │      │      │      │      │             │      │ Mute │ Vol- │ Vol+ │      │
+ * │CapsLk│ GUI  │      │      │      │             │      │ Mute │ Vol- │ Vol+ │ Ctrl │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_LOWER] = LAYOUT_preonic_1x2uC( \
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
+  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_INS,  \
   KC_TILD, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_DEL,  \
   KC_LCTL, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_PIPE, \
   KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, KC_PLUS, KC_MINS, KC_EQL,  _______, KC_UNDS, KC_RSFT, \
-  KC_LCTL, _______, _______, _______, _______,     _______,      _______, KC_MUTE, KC_VOLD, KC_VOLU, _______  \
+  KC_CAPS, KC_LGUI, _______, _______, _______,     _______,      _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_RCTL  \
 ),
 
 /* Raise
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │      │
+ * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │ Ins  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │   `  │  F9  │  F10 │  F11 │  F12 │      │   *  │   (  │   )  │   [  │   ]  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_RAISE] = LAYOUT_preonic_1x2uC( \
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
+  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_INS,  \
   KC_GRV,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_ASTR, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, KC_DEL,  \
   KC_LCTL, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_MINS, KC_EQL,  KC_BSLS, \
   KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_PIPE, KC_AMPR, KC_UNDS, KC_PLUS, XXXXXXX, KC_DLR,  _______, \
@@ -196,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │      │ Reset│ Debug│      │      │      │      │ Linux│ OSX  │ Win  │      │  Del │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │AudOn │AudOff│AGnorm│AGswap│Qwerty│Game  │Prog  │      │      │
+ * │      │      │      │AudOn │AudOff│AGnorm│AGswap│Qwerty│Hack  │      │      │      │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │      │Voice-│Voice+│MusOn │MusOff│MidiOn│MidOff│      │      │      │      │      │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
@@ -206,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_preonic_1x2uC( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   _______, RESET,   DEBUG,   TERM_ON, TERM_OFF,_______, _______, UC_M_LN, UC_M_OS, UC_M_WC, _______, KC_DEL,  \
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  GAME,    PROG,    _______, _______, \
+  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  HACK,    _______, _______, _______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______  \
 ),
@@ -278,14 +278,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-float tone_qwerty[][2]  = SONG(QWERTY_SOUND);
-float tone_game[][2]    = {
+float tone_qwerty[][2]    = {
   {NOTE_E6, 10}   ,{NOTE_E6, 10}  ,{NOTE_REST, 10} ,{NOTE_E6, 10}   ,
   {NOTE_REST, 10} ,{NOTE_C6, 10}  ,{NOTE_E6, 10}   ,{NOTE_REST, 10} ,
   {NOTE_G6, 10}   ,{NOTE_REST, 30},
   {NOTE_G5, 10}   ,{NOTE_REST, 30}
 };
-float tone_prog[][2]  = SONG(PREONIC_SOUND);
+float tone_hack[][2]  = SONG(PREONIC_SOUND);
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -299,21 +298,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case GAME:
+        case EXTRA:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-            PLAY_SONG(tone_game);
-            #endif
-            set_single_persistent_default_layer(_GAME);
+            layer_on(_EXTRA);
+          } else {
+            layer_off(_EXTRA);
           }
           return false;
           break;
-        case PROG:
+        case HACK:
           if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
-            PLAY_SONG(tone_prog);
+            PLAY_SONG(tone_hack);
             #endif
-            set_single_persistent_default_layer(_PROG);
+            set_single_persistent_default_layer(_HACK);
           }
           return false;
           break;
