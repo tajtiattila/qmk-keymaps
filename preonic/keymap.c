@@ -19,7 +19,6 @@
 
 enum preonic_layers {
   _QWERTY,
-  _EXTRA,
   _HACK,
   _LOWER,
   _RAISE,
@@ -34,7 +33,6 @@ enum preonic_keycodes {
   HACK,
   LOWER,
   RAISE,
-  EXTRA,
   BACKLIT
 };
 
@@ -95,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Shift│   Z  │   X  │   C  │   V  │   B  │   N  │   M  │   ,  │   .  │   /  │Enter │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Xtra │   `  │ F20  │ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
+ * │   `  │ GUI  │Accent│ LAlt │Lower │    Space    │Raise │ Left │ Down │  Up  │Right │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_QWERTY] = LAYOUT_preonic_1x2uC( \
@@ -103,28 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  EXTRA,   KC_GRV,  lACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
-
-/* Xtra: arrows and keypad
- * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │      │      │      │      │      │      │NumLk │ kp7  │ kp8  │ kp9  │ kp/  │      │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │      │ Ins  │ Home │ PgUp │ kp4  │ kp5  │ kp6  │ kp*  │      │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │      │ Del  │ End  │ PgDn │ kp1  │ kp2  │ kp3  │ kp-  │      │
- * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │      │      │      │      │ kp0  │ kp.  │ Entr │ kp+  │      │
- * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │      │      │             │      │      │      │      │      │
- * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
- */
-[_EXTRA] = LAYOUT_preonic_1x2uC( \
-  _______, _______, _______, _______, _______, _______, KC_NLCK, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS, _______, \
-  _______, _______, _______, _______, KC_INS,  KC_HOME, KC_PGUP, KC_KP_4, KC_KP_5, KC_KP_6, KC_PAST, _______, \
-  _______, _______, _______, _______, KC_DEL,  KC_END,  KC_PGDN, KC_KP_1, KC_KP_2, KC_KP_3, KC_PMNS, _______, \
-  _______, _______, _______, _______, _______, _______, _______, KC_KP_0, KC_PDOT, KC_PENT, KC_PPLS, _______, \
-  _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______  \
+  KC_GRV,  KC_LGUI, xACC,    KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Hack
@@ -150,43 +127,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │ Ins  │
+ * │ Esc  │ Ins  │ Del  │ Home │  End │      │ NumLk│  p/  │  p*  │      │      │ Ins  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │   ~  │  F9  │  F10 │  F11 │  F12 │      │   5  │   6  │   7  │   8  │   9  │ Del  │
+ * │   ~  │  F9  │  F10 │  F11 │  F12 │ PgUp │  p5  │  p6  │  p7  │  p8  │  p9  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Ctrl │  F5  │  F6  │  F7  │  F8  │      │   0  │   1  │   2  │   3  │   4  │  |   │
+ * │ Ctrl │  F5  │  F6  │  F7  │  F8  │ PgDn │  p0  │  p1  │  p2  │  p3  │  p4  │  |   │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Shift│  F1  │  F2  │  F3  │  F4  │      │   +  │   -  │   =  │      │   _  │Shift │
+ * │ Shift│  F1  │  F2  │  F3  │  F4  │      │  p+  │  p-  │   =  │  p.  │pEnter│Shift │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
  * │CapsLk│ GUI  │      │      │      │             │      │ Mute │ Vol- │ Vol+ │ Ctrl │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_LOWER] = LAYOUT_preonic_1x2uC( \
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_INS,  \
-  KC_TILD, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_DEL,  \
-  KC_LCTL, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_PIPE, \
-  KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, KC_PLUS, KC_MINS, KC_EQL,  _______, KC_UNDS, KC_RSFT, \
+  KC_ESC,  KC_INS,  KC_DEL,  KC_HOME, KC_END,  XXXXXXX, KC_NLCK, KC_PSLS, KC_PAST, XXXXXXX, XXXXXXX, KC_INS,  \
+  KC_TILD, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PGUP, KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_P9,   KC_DEL,  \
+  KC_LCTL, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_PGDN, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_P4,   KC_PIPE, \
+  KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, KC_PPLS, KC_PMNS, KC_EQL,  KC_PDOT, KC_PENT, KC_RSFT, \
   KC_CAPS, KC_LGUI, _______, _______, _______,     _______,      _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_RCTL  \
 ),
 
 /* Raise
  * ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐
- * │ Esc  │   !  │   @  │   #  │   $  │   %  │   ^  │   &  │   *  │   (  │   )  │ Ins  │
+ * │ Esc  │      │      │      │      │      │      │      │      │      │      │ Ins  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │   `  │  F9  │  F10 │  F11 │  F12 │      │   *  │   (  │   )  │   [  │   ]  │ Del  │
+ * │   `  │      │      │   €  │      │      │   *  │   (  │   )  │   [  │   ]  │ Del  │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
  * │ Ctrl │   !  │   @  │   #  │   $  │   %  │   ^  │   {  │   }  │   -  │   =  │  \   │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │ Shift│  F1  │  F2  │  F3  │  F4  │   |  │   &  │   _  │   +  │      │   $  │      │
+ * │ Shift│      │      │      │      │   |  │   &  │   _  │   +  │      │   $  │      │
  * ├──────┼──────┼──────┼──────┼──────┼──────┴──────┼──────┼──────┼──────┼──────┼──────┤
  * │      │      │      │      │      │             │      │ Mute │ Vol- │ Vol+ │      │
  * └──────┴──────┴──────┴──────┴──────┴─────────────┴──────┴──────┴──────┴──────┴──────┘
  */
 [_RAISE] = LAYOUT_preonic_1x2uC( \
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_INS,  \
-  KC_GRV,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_ASTR, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, KC_DEL,  \
+  KC_ESC,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_INS,  \
+  KC_GRV,  _______, _______, X(EUR),  _______, _______, KC_ASTR, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, KC_DEL,  \
   KC_LCTL, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_MINS, KC_EQL,  KC_BSLS, \
-  KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_PIPE, KC_AMPR, KC_UNDS, KC_PLUS, XXXXXXX, KC_DLR,  _______, \
+  KC_LSFT, _______, _______, _______, _______, KC_PIPE, KC_AMPR, KC_UNDS, KC_PLUS, XXXXXXX, KC_DLR,  _______, \
   _______, _______, _______, _______, _______,     _______,      _______, KC_MUTE, KC_VOLD, KC_VOLU, _______  \
 ),
 
@@ -295,14 +272,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             PLAY_SONG(tone_qwerty);
             #endif
             set_single_persistent_default_layer(_QWERTY);
-          }
-          return false;
-          break;
-        case EXTRA:
-          if (record->event.pressed) {
-            layer_on(_EXTRA);
-          } else {
-            layer_off(_EXTRA);
           }
           return false;
           break;
